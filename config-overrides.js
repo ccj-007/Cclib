@@ -6,15 +6,16 @@ const {
   addWebpackPlugin,
   // addLessLoader,
   // addPostcssPlugins,
-} = require("customize-cra");
-const path = require("path");
-const ProgressBarPlugin = require("progress-bar-webpack-plugin");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-const CompressionWebpackPlugin = require("compression-webpack-plugin");
+} = require('customize-cra');
+const path = require('path');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 
-const isEnvProduction = process.env.NODE_ENV === "production";
+const isEnvProduction = process.env.NODE_ENV === 'production';
+const { addBabelPreset } = require('customize-cra');
 
-const addCompression = () => config => {
+const addCompression = () => (config) => {
   if (isEnvProduction) {
     config.plugins.push(
       // gzip压缩
@@ -23,8 +24,8 @@ const addCompression = () => config => {
         // 只处理比1kb大的资源
         threshold: 1024,
         // 只处理压缩率低于90%的文件
-        minRatio: 0.9
-      })
+        minRatio: 0.9,
+      }),
     );
   }
 
@@ -32,7 +33,7 @@ const addCompression = () => config => {
 };
 
 // 查看打包后各包大小
-const addAnalyzer = () => config => {
+const addAnalyzer = () => (config) => {
   if (process.env.ANALYZER) {
     config.plugins.push(new BundleAnalyzerPlugin());
   }
@@ -41,19 +42,21 @@ const addAnalyzer = () => config => {
 };
 
 module.exports = override(
+  // emotion css props support
+  addBabelPreset('@emotion/babel-preset-css-prop'),
   //!!!! 按需加载 此处如果仅配置单个按需引入如antd，需要去掉第二参数的中括号，否则配置会失效
-  fixBabelImports("import", [
+  fixBabelImports('import', [
     {
-      libraryName: "antd",
-      libraryDirectory: "es",
+      libraryName: 'antd',
+      libraryDirectory: 'es',
       // 若修改antd主题，"css"需改为true
-      style: "css"
+      style: 'css',
     },
     {
-      libraryName: "@material-ui/core",
-      libraryDirectory: "esm",
-      camel2DashComponentName: false
-    }
+      libraryName: '@material-ui/core',
+      libraryDirectory: 'esm',
+      camel2DashComponentName: false,
+    },
   ]),
   // 移动端适配，px转rem 需要安装postcss-pxtorem
   // addPostcssPlugins([
@@ -78,9 +81,9 @@ module.exports = override(
   addAnalyzer(),
   addWebpackPlugin(
     // 终端进度条显示
-    new ProgressBarPlugin()
+    new ProgressBarPlugin(),
   ),
   addWebpackAlias({
-    ["@"]: path.resolve(__dirname, "src")
-  })
+    ['@']: path.resolve(__dirname, 'src'),
+  }),
 );

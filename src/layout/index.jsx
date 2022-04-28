@@ -4,14 +4,17 @@ import Header from './header'
 import Main from './main'
 import Sidebar from './sidebar'
 
-
 export default function layout () {
   return (
-    <div>
-      <Footer></Footer>
+    <div className='layouts'>
       <Header></Header>
-      <Main></Main>
-      <Sidebar></Sidebar>
+      <div className='u-flex'>
+        <Sidebar></Sidebar>
+        <div className='u-flex-column'>
+          <Main></Main>
+        </div>
+      </div>
+      <Footer></Footer>
     </div>
   )
 }
