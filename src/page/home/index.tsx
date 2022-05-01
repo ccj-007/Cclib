@@ -1,10 +1,10 @@
-import React from 'react'
-import Footer from './footer'
-import Header from './header'
-import Main from './main'
-import Sidebar from './sidebar'
+import React from 'react';
+import Footer from '../../layout/footer';
+import Header from '../../layout/header';
+import Main from '../../layout/main';
+import Sidebar from '../../layout/sidebar';
 
-export default function layout () {
+export default function layout() {
   return (
     <div className='layouts'>
       <Header></Header>
@@ -16,5 +16,5 @@ export default function layout () {
       </div>
       <Footer></Footer>
     </div>
-  )
+  );
 }

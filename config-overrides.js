@@ -4,8 +4,6 @@ const {
   addLessLoader,
   addWebpackAlias,
   addWebpackPlugin,
-  // addLessLoader,
-  // addPostcssPlugins,
 } = require('customize-cra');
 const path = require('path');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
@@ -44,39 +42,13 @@ const addAnalyzer = () => (config) => {
 module.exports = override(
   // emotion css props support
   addBabelPreset('@emotion/babel-preset-css-prop'),
-  //!!!! 按需加载 此处如果仅配置单个按需引入如antd，需要去掉第二参数的中括号，否则配置会失效
   fixBabelImports('import', [
-    {
-      libraryName: 'antd',
-      libraryDirectory: 'es',
-      // 若修改antd主题，"css"需改为true
-      style: 'css',
-    },
     {
       libraryName: '@material-ui/core',
       libraryDirectory: 'esm',
       camel2DashComponentName: false,
     },
   ]),
-  // 移动端适配，px转rem 需要安装postcss-pxtorem
-  // addPostcssPlugins([
-  //  require("postcss-pxtorem")({
-  //    // rem 转换基数
-  //    rootValue: 16,
-  //    // 保留五位小数点
-  //    unitPrecision: 5,
-  //    // 所有属性都转换
-  //    propList: ["*"],
-  //    // 低于2px不转换
-  //    minPixelValue: 2,
-  //    // 排除antd样式
-  //  selectorBlackList:[/^\.ant-/,"html"]
-  //  }),
-  // 修改antd 主题 需 yarn add less less-loader -D 添加依赖包
-  // addLessLoader({
-  //   javascriptEnabled: true
-  //   modifyVars: { '@primary-color': '#1DA57A' },
-  // }),
   addCompression(),
   addAnalyzer(),
   addWebpackPlugin(
