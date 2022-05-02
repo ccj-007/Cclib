@@ -1,0 +1,70 @@
+@domFontList: 2px, 4px, 6px, 8px, 10px, 12px, 14px, 16px, 18px, 20px;
+@domMarginList: 5px, 10px, 20px, 30px;
+@domMarginIndexList: 5, 10, 20, 30;
+
+@domPaddingList: 5px, 10px, 20px, 30px;
+@domPaddingIndexList: 5, 10, 20, 30;
+
+@len: length(@domFontList);
+
+.loopFont(@i) when (@i <=@len) {
+  @double: @i * 2;
+
+  .f@{double} {
+    font-size: extract(@domFontList, @i);
+  }
+
+  .loopFont(@i+1);
+}
+
+.loopFont(1);
+
+
+.loopMargin(@i) when (@i <=@len) {
+  @m: extract(@domMarginIndexList, @i);
+
+  .ml@{m} {
+    margin-left: extract(@domMarginList, @i);
+  }
+
+  .mr@{m} {
+    margin-right: extract(@domMarginList, @i);
+  }
+
+  .mt@{m} {
+    margin-top: extract(@domMarginList, @i);
+  }
+
+  .mb@{m} {
+    margin-bottom: extract(@domMarginList, @i);
+  }
+
+  .loopMargin(@i+1);
+}
+
+.loopMargin(1);
+
+
+.loopPadding(@i) when (@i <=@len) {
+  @p: extract(@domPaddingIndexList, @i);
+
+  .ml@{p} {
+    margin-left: extract(@domPaddingList, @i);
+  }
+
+  .mr@{p} {
+    margin-right: extract(@domPaddingList, @i);
+  }
+
+  .mt@{p} {
+    margin-top: extract(@domPaddingList, @i);
+  }
+
+  .mb@{p} {
+    margin-bottom: extract(@domPaddingList, @i);
+  }
+
+  .loopPadding(@i+1);
+}
+
+.loopPadding(1);

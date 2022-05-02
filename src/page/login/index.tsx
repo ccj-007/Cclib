@@ -18,7 +18,7 @@ export default function login() {
             image={loginBg}
             alt='loading....'
           />
-          <Link className={styles.jump} to='/home'>
+          <Link className={styles.jump} to='/home/first'>
             点击进入
           </Link>
         </CardActionArea>

@@ -6,15 +6,13 @@ const Footer = css`
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: #000;
 `;
 export default function footer() {
   return (
     <div css={Footer}>
-      <div>只给你分享一些好玩的东东 ！</div>
-      <div>author@chen</div>
+      <div className='mt20'>只给你分享一些好玩的东东 ！</div>
+      <div className='mt5'>author@chen</div>
     </div>
   );
 }

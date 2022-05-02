@@ -1,5 +1,4 @@
 {
-  "extends": "./paths.json",
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -28,9 +27,13 @@
       }
     ],
     // 在paths中配置解析路径
+    "baseUrl": ".",
     "paths": {
-      "@*": [
-        "./src/*"
+      "@/*": [
+        "src/*"
+      ],
+      "@page/*": [
+        "src/page/*"
       ]
     },
   },

@@ -57,5 +57,17 @@ module.exports = override(
   ),
   addWebpackAlias({
     ['@']: path.resolve(__dirname, 'src'),
+    ['@page']: path.resolve(__dirname, 'src/page'),
+  }),
+  addLessLoader({
+    strictMath: true,
+    noIeCompat: true,
+    modifyVars: {
+      '@primary-color': '#1DA57A',
+    },
+    cssLoaderOptions: {}, // .less file used css-loader option, not all CSS file.
+    cssModules: {
+      localIdentName: '[path][name]__[local]--[hash:base64:5]',
+    },
   }),
 );

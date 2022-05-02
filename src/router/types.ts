@@ -1,4 +1,4 @@
-type childrenType = {
+export interface childrenType {
   path: String,
   name: String,
   meta: {

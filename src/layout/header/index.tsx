@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeIcon from './homeIcon';
-import Avatar from './avatar';
+import HeaderRight from './headerRight';
 import { css, jsx } from '@emotion/react';
 
 const Header = css`
@@ -15,7 +15,7 @@ export default function header() {
   return (
     <div css={Header}>
       <HomeIcon></HomeIcon>
-      <Avatar></Avatar>
+      <HeaderRight></HeaderRight>
     </div>
   );
 }
