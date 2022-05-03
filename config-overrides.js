@@ -4,6 +4,7 @@ const {
   addLessLoader,
   addWebpackAlias,
   addWebpackPlugin,
+  babelExclude,
 } = require('customize-cra');
 const path = require('path');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
@@ -70,4 +71,5 @@ module.exports = override(
       localIdentName: '[path][name]__[local]--[hash:base64:5]',
     },
   }),
+  babelExclude([path.resolve('src/service')]), //排除后端代码
 );
