@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'
-
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import styles from './index.module.css';
 import { deepOrange, deepPurple } from '@mui/material/colors';
 import SearchBar from "../searchBar";
+import RightSidebar from '@/layout/rightSidebar'
 
 export default function HeaderRight() {
   let navigate = useNavigate();
@@ -17,6 +17,9 @@ export default function HeaderRight() {
     <div className='u-flex-center flex-row-end'>
       <SearchBar></SearchBar>
       <div>your name ！</div>
+      <div className='mr10'>
+        <RightSidebar></RightSidebar>
+      </div>
       <div className={styles.avatar}>
         <Stack direction='row' spacing={2}>
           <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>

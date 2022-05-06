@@ -2,25 +2,55 @@ import React from 'react';
 import './App.css';
 import Layout from './page/home';
 import Login from './page/login';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
+import { Route, Routes, Navigate, useRoutes } from 'react-router-dom';
+import routes from '@/router/routes'
 // import { GlobalStyles } from './style/global';
 // import { Global, css } from '@emotion/react';
-
+import ThemeProvider from '@mui/material/styles/ThemeProvider';
+import createTheme from '@mui/material/styles/createTheme';
+import { PaletteMode } from '@mui/material';
+import { amber, deepOrange, grey } from '@mui/material/colors';
+import { ColorModeContext } from '@/theme/colorModeContext'
 function App() {
+  const element = useRoutes(routes)
+  const [mode, setMode] = React.useState<PaletteMode>('light');
+  const colorMode = React.useMemo(
+    () => ({
+      // The dark mode switch would invoke this method
+      toggleColorMode: () => {
+        setMode((prevMode: PaletteMode) =>
+          prevMode === 'light' ? 'dark' : 'light',
+        );
+      },
+
+    }),
+    [],
+  );
+
+  // Update the theme only if the mode changes
+  const globalTheme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+        status: {
+          main: '#000',
+        },
+      }),
+    [mode],
+  );
+
   return (
-    <div className='App'>
-      {/* <Global styles={GlobalStyles}> */}
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Login />} />
-          <Route path='login' element={<Login />} />
-          <Route path='home/*' element={<Layout />}>
-          </Route>
-        </Routes>
-      </BrowserRouter>
-      {/* </Global> */}
-    </div>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={globalTheme}>
+        <div className='App'>
+          {/* <Global styles={GlobalStyles}> */}
+          {element}
+          {/* </Global> */}
+        </div>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 

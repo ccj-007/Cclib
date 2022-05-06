@@ -34,8 +34,8 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "build:dev": "cross-env REACT_APP_NODE_ENV=development node scripts/build.js",
-    "build:prod": "cross-env REACT_APP_NODE_ENV=production node scripts/build.js",
+    "build:dev": "cross-env REACT_APP_NODE_ENV=development  react-app-rewired build",
+    "build:prod": "cross-env REACT_APP_NODE_ENV=production  react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
