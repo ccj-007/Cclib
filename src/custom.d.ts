@@ -11,7 +11,12 @@ declare module "*.less" {
 declare module '@mui/material/styles' {
   interface Theme {
     status: {
-      danger: string;
+      main: string;
+    };
+  }
+  interface ThemeOptions {
+    status?: {
+      main?: string;
     };
   }
   interface experimentalStyled {
@@ -20,11 +25,19 @@ declare module '@mui/material/styles' {
   interface alpha {
 
   }
-  // allow configuration using `createTheme`
-  interface ThemeOptions {
-    status?: {
-      danger?: string;
+  interface ThemeProvider {
+
+  }
+  interface createTheme {
+    status: {
+      main: string;
     };
+  }
+}
+
+declare module '@mui/styles' {
+  interface useTheme {
+
   }
 }
 

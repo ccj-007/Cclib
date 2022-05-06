@@ -2,18 +2,28 @@ import React from 'react';
 import HomeIcon from './homeIcon';
 import HeaderRight from './headerRight';
 import { css, jsx } from '@emotion/react';
+import useTheme from '@mui/material/styles/useTheme';
 
-const Header = css`
+interface MyTheme {
+  status: {
+    main: String
+  }
+}
+export default function Header() {
+  const theme = useTheme<MyTheme>();
+  let bgStyle = theme.status.main
+
+  const HeaderCSS = css`
   width: 100vw;
   color: #fff;
   height: 7vh;
   display: flex;
   justify-content: space-between;
-  background-color: #000;
+  background-color: ${bgStyle};
 `;
-export default function header() {
+
   return (
-    <div css={Header}>
+    <div css={HeaderCSS}>
       <HomeIcon></HomeIcon>
       <HeaderRight></HeaderRight>
     </div>
