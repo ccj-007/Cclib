@@ -13,6 +13,7 @@ import { amber, deepOrange, grey } from '@mui/material/colors';
 import { ColorModeContext } from '@/theme/colorModeContext'
 function App() {
   const element = useRoutes(routes)
+
   const [mode, setMode] = React.useState<PaletteMode>('light');
   const colorMode = React.useMemo(
     () => ({
@@ -22,7 +23,6 @@ function App() {
           prevMode === 'light' ? 'dark' : 'light',
         );
       },
-
     }),
     [],
   );

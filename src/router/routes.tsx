@@ -8,7 +8,7 @@ import Amuse from '@/layout/main/netSite/amuse'
 
 export default [{
   path: '/login',
-  element: <Login />
+  element: <Login />,
 }, {
   path: '/home',
   element: <Layout />,

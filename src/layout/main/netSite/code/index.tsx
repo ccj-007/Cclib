@@ -57,12 +57,13 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 type codeType = {
-  detail: String,
-  link: String,
-  linkSum: Number,
-  netId: Number,
-  title: String,
-  type: 'code' | 'design' | 'amuse'
+  detail: string,
+  link: string,
+  linkSum: number,
+  netId: number,
+  title: string,
+  type: 'code' | 'design' | 'amuse',
+  expanded: boolean
 }
 
 export default function Code() {
@@ -70,19 +71,20 @@ export default function Code() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const [expanded, setExpanded] = React.useState(false);
   const [linkList, setLinkList] = React.useState([]);
-
   React.useEffect(() => {
     const init = async () => {
       const res = await getNetSiteCodeLinkList()
-      const getCodes = res.data.filter((item: codeType) => item.type === 'code')
+      let getCodes = res.data.filter((item: codeType) => item.type === 'code')
+      getCodes.forEach((codeLink: { expanded: boolean }) => { codeLink.expanded = false })
       setLinkList(getCodes) //filter out the type of code module
     }
     init()
   }, [])
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  const handleExpandClick = (index: number) => {
+    let linkCopy = JSON.parse(JSON.stringify(linkList))
+    linkCopy[index].expanded = !linkCopy[index].expanded
+    setLinkList(linkCopy);
   };
 
   //click on the jump code modules
@@ -136,15 +138,15 @@ export default function Code() {
                     <ShareIcon onClick={() => { jumpCodeSite(link.link) }} />
                   </IconButton>
                   <ExpandMore
-                    expand={expanded}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
+                    expand={link.expanded}
+                    onClick={() => handleExpandClick(index)}
+                    aria-expanded={link.expanded}
                     aria-label="show more"
                   >
                     <ExpandMoreIcon />
                   </ExpandMore>
                 </CardActions>
-                <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <Collapse in={link.expanded} timeout="auto" unmountOnExit>
                   <CardContent>
                     <Typography paragraph> {link.detail}</Typography>
                   </CardContent>

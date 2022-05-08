@@ -1,5 +1,11 @@
+.cur {
+  cursor: pointer;
+}
 .u-flex {
   display: flex;
+}
+.gray {
+  color: rgb(177, 177, 177);
 }
 
 .u-flex-center {

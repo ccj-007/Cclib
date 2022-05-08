@@ -6,7 +6,7 @@ import useTheme from '@mui/material/styles/useTheme';
 
 interface MyTheme {
   status: {
-    main: String
+    main: string
   }
 }
 export default function Header() {

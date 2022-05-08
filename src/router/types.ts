@@ -1,16 +1,16 @@
 export interface childrenType {
-  path: String,
-  name: String,
+  path: string,
+  name: string,
   meta: {
-    icon: String,
+    icon: string,
   }
 }
 
 export interface MenusType {
-  path: String,
-  name: String,
+  path: string,
+  name: string,
   meta: {
-    icon: String,
+    icon: string,
   },
   children?: childrenType[],
 }
