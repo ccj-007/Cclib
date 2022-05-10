@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import style from './index.module.css'
 import { experimentalStyled as styled } from '@mui/material/styles';
 import MainHeader from '../../components/mainHeader'
 
@@ -63,7 +63,8 @@ type codeType = {
   netId: number,
   title: string,
   type: 'code' | 'design' | 'amuse',
-  expanded: boolean
+  expanded: boolean,
+  imgUrl: string
 }
 
 export default function Code() {
@@ -122,12 +123,12 @@ export default function Code() {
                 <CardMedia
                   component="img"
                   height="124"
-                  image={loginBgImg}
+                  image={link.imgUrl}
                   alt="Paella dish"
                 />
                 <CardContent>
                   <Typography variant="body2" color="text.secondary">
-                    {link.detail}
+                    <div className={style.text}>{link.detail}</div>
                   </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
