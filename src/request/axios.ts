@@ -1,23 +1,18 @@
 import axios from 'axios';
 import { AxiosResponse } from 'axios'
-import QS from 'qs';
 
 const isPrd = process.env.NODE_ENV
 
 export const baseURL = isPrd ? 'http://localhost:8000' : 'http://124.223.162.201'
 
 const service = axios.create({
-  baseURL
+  baseURL,
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8'
+  }
 })
 
 service.interceptors.request.use(config => {
-  const token = window.localStorage.getItem('userToken')
-  //设置请求头
-  config.headers = {
-    'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-  }
-  //序列化请求参数，不然post请求参数后台接收不正常
-  config.data = QS.stringify(config.data)
   return config
 }, (error: any) => {
   return error;

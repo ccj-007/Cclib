@@ -8,6 +8,12 @@ declare module "*.less" {
   export default less;
 }
 
+declare module '@reduxjs/toolkit' {
+  type combineReducers = {
+
+  }
+}
+
 declare module '@mui/material/styles' {
   interface Theme {
     status: {
