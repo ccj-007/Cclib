@@ -1,17 +1,15 @@
-declare module "*.css" {
+declare module '*.css' {
   const css: { [key: string]: string };
   export default css;
 }
 
-declare module "*.less" {
+declare module '*.less' {
   const less: { [key: string]: string };
   export default less;
 }
 
 declare module '@reduxjs/toolkit' {
-  type combineReducers = {
-
-  }
+  type combineReducers = {};
 }
 
 declare module '@mui/material/styles' {
@@ -25,15 +23,9 @@ declare module '@mui/material/styles' {
       main?: string;
     };
   }
-  interface experimentalStyled {
-
-  }
-  interface alpha {
-
-  }
-  interface ThemeProvider {
-
-  }
+  interface experimentalStyled {}
+  interface alpha {}
+  interface ThemeProvider {}
   interface createTheme {
     status: {
       main: string;
@@ -42,14 +34,9 @@ declare module '@mui/material/styles' {
 }
 
 declare module '@mui/styles' {
-  interface useTheme {
-
-  }
+  interface useTheme {}
 }
 
 declare module '*.jpg';
 declare module '*.png';
 declare module '*.ts';
-
-
-

@@ -2,16 +2,21 @@ import React from 'react';
 import NestedList from './nestedList';
 import { css, jsx } from '@emotion/react';
 import styles from './index.module.css';
-const Sidebar = css`
-  width: 15vw;
-  height: 83vh;
-  background-color: #eee;
-  border-right: 1px solid #858585;
-`;
-export default function sidebar() {
+import Box from '@mui/material/Box';
+import useTheme from '@mui/material/styles/useTheme';
+
+export default function Sidebar() {
+  const theme = useTheme();
+  const mode = theme.palette.mode
   return (
-    <div css={Sidebar}>
-      <NestedList></NestedList>
-    </div>
+    <Box
+      sx={{
+        width: '15vw',
+        height: '83vh',
+        backgroundColor: mode === 'light' ? '#eee' : '#000',
+        borderRight: '1px solid #858585',
+      }}
+    > <NestedList></NestedList>
+    </Box>
   );
 }

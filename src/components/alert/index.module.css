@@ -1,13 +1,8 @@
-.tips {
-}
-
 .slidebottom {
-  width: 15%;
   position: fixed;
   left: 50%;
-  top: 2%;
+  top: 0%;
   z-index: 99;
   transform: translate(-50%);
-  -webkit-animation: slide-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: slide-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  transition: 0.1s all linear;
 }

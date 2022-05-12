@@ -12,6 +12,8 @@ import { PaletteMode } from '@mui/material';
 import { amber, deepOrange, grey } from '@mui/material/colors';
 import { ColorModeContext } from '@/theme/colorModeContext'
 import Alerts from '@/components/alert'
+import Load from '@/components/load'
+
 
 function App() {
   const element = useRoutes(routes)
@@ -47,6 +49,7 @@ function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={globalTheme}>
         <Alerts></Alerts>
+        <Load></Load>
         <div className='App'>
           {/* <Global styles={GlobalStyles}> */}
           {element}

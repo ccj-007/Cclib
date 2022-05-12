@@ -33,7 +33,6 @@ export default function Login() {
   const Navigate = useNavigate()
   const store = useSelector((state) => state);
   const dispatch = useDispatch()
-  console.log(store);
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -45,14 +44,16 @@ export default function Login() {
   const onSubmit = async (data: any) => {
     let { username, password } = data
     let res = await login({ username, password })
-    // changeAlert('success')
+    console.log("结果", res)
     if (res.success) {
-      dispatch(setAlerts('success'))
+      dispatch(setAlerts({ type: 'success', content: '恭喜你，登录成功 ！！！' }))
       Navigate('/home/first')
+    } else {
+      dispatch(setAlerts({ type: 'error', content: '你的账号和密码存在错误 ！！！' }))
     }
   };
   const jumpHome = () => {
-    dispatch(setAlerts('success'))
+    dispatch(setAlerts({ type: 'success', content: '恭喜你，登录成功 ！！！' }))
     Navigate('/home/first')
   }
 

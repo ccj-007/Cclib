@@ -1,12 +1,27 @@
 import { AlertsAction } from './actions';
 
-export default (state = '', action: AlertsAction): string => {
+export default (
+  state = {
+    type: '',
+    content: '',
+  },
+  action: AlertsAction,
+): AlertsAction => {
   switch (action.type) {
     case 'success':
-      return 'success'
+      return {
+        type: 'success',
+        content: action.content,
+      };
     case 'error':
-      return 'error'
+      return {
+        type: 'error',
+        content: action.content,
+      };
     default:
-      return ''
+      return {
+        type: '',
+        content: '',
+      };
   }
-}
+};
