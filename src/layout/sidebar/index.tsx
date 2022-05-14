@@ -14,7 +14,8 @@ export default function Sidebar() {
         width: '15vw',
         height: '83vh',
         backgroundColor: mode === 'light' ? '#eee' : '#000',
-        borderRight: '1px solid #858585',
+        overflow: 'hidden',
+        overflowY: 'auto',
       }}
     > <NestedList></NestedList>
     </Box>

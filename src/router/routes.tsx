@@ -6,6 +6,13 @@ import Code from '@/layout/main/netSite/code'
 import Design from '@/layout/main/netSite/design'
 import Amuse from '@/layout/main/netSite/amuse'
 
+import Skill from '@/layout/main/article/skill'
+import Share from '@/layout/main/article/share'
+import Know from '@/layout/main/article/know'
+
+import ModelLibs from '@/layout/main/suModel/modelLibs'
+import UploadModel from '@/layout/main/suModel/uploadModel'
+
 export default [{
   path: '/login',
   element: <Login />,
@@ -27,6 +34,21 @@ export default [{
   }, {
     path: 'netSite/amuse',
     element: <Amuse />,
+  }, {
+    path: 'article/skill',
+    element: <Skill />,
+  }, {
+    path: 'article/share',
+    element: <Share />,
+  }, {
+    path: 'article/know',
+    element: <Know />,
+  }, {
+    path: 'suModel/modelLibs',
+    element: <ModelLibs />,
+  }, {
+    path: 'suModel/uploadModel',
+    element: <UploadModel />,
   }]
 }, {
   path: '*',

@@ -1,17 +1,16 @@
-export interface childrenType {
-  path: string,
-  name: string,
+export type childrenType = {
+  path: string;
+  name: string;
   meta: {
-    icon: string,
-  }
-}
+    icon: string;
+  };
+};
 
-export interface MenusType {
-  path: string,
-  name: string,
+export type MenusType = {
+  path: string;
+  name: string;
   meta: {
-    icon: string,
-  },
-  children?: childrenType[],
-}
-
+    icon: string;
+  };
+  children?: childrenType[];
+};

@@ -21,6 +21,8 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import PivotTableChartIcon from '@mui/icons-material/PivotTableChart';
 import ApartmentIcon from '@mui/icons-material/Apartment';
+import { FamilyRestroomRounded, LensTwoTone } from '@mui/icons-material';
+import { AnyListenerPredicate } from '@reduxjs/toolkit/dist/listenerMiddleware/types';
 
 const iconList: any = {
   "SendIcon": <SendIcon />,
@@ -33,21 +35,28 @@ const iconList: any = {
   "ApartmentIcon": <ApartmentIcon />,
 
 };
+
+type openType = { open: boolean }
+type MenusOpenType = MenusType & openType
+
 const getIconComponent = (menu: MenusType | childrenType) => {
   const icon = menu.meta.icon;
   // @ts-ignore
   return iconList[icon];
 };
 export default function NestedList() {
-  const [open, setOpen] = useState(true);
-  let navigate = useNavigate();
+  let initOpen: any = Array.from({ length: 5 }).fill(true)
 
+  const [openList, setOpenList] = useState(initOpen)
+
+  const navigate = useNavigate();
   //侧边栏路由跳转
   const jumpModules = (routeURL: any) => {
     navigate(routeURL);
   };
-  const changeOpen = () => {
-    setOpen(!open);
+  const changeOpen = (e: any, i: number) => {
+    openList[i] = !openList[i]
+    setOpenList([...openList])
   }
 
   return (
@@ -60,29 +69,28 @@ export default function NestedList() {
           广告位招租
         </ListSubheader>
       }>
-      {menuRoutes.map((menus: MenusType, i) => {
+      {menuRoutes.map((menus: MenusType, i: number) => {
         return (
           <div key={i}>
-            <ListItemButton onClick={() => changeOpen()}>
+            <ListItemButton onClick={() => changeOpen(e, i)}>
               <ListItemIcon>
                 {/* <SendIcon /> */}
                 {getIconComponent(menus)}
               </ListItemIcon>
               <ListItemText primary={menus.name} />
-              {open ? <ExpandLess /> : <ExpandMore />}
+              {openList[i] ? <ExpandMore /> : <ExpandLess />}
             </ListItemButton>
 
-            <Collapse in={open} timeout='auto' unmountOnExit>
+            <Collapse in={openList[i]} timeout='auto' unmountOnExit>
               {
-                menus.children?.map((menu, i) => {
+                menus.children?.map((menu: childrenType) => {
                   return (
-                    <Collapse in={open} timeout='auto' unmountOnExit>
+                    <Collapse in={openList[i]} timeout='auto' unmountOnExit>
                       <List component='div' disablePadding>
                         <ListItemButton sx={{ pl: 4 }} onClick={() => jumpModules(menu.path)}>
                           <ListItemIcon>
                             {getIconComponent(menu)}
                           </ListItemIcon>
-
                           <ListItemText primary={menu.name} />
                         </ListItemButton>
                       </List>
@@ -97,3 +105,15 @@ export default function NestedList() {
     </List >
   );
 }
+function state(state: any, arg1: (MenusOpenTypes: any) => void) {
+  throw new Error('Function not implemented.');
+}
+
+function item(item: any, arg1: (MenusOpenTypes: any) => void) {
+  throw new Error('Function not implemented.');
+}
+
+function e(e: any): void {
+  throw new Error('Function not implemented.');
+}
+

@@ -1,0 +1,23 @@
+.wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginImg {
+  width: 500px;
+  height: 400px;
+}
+
+.jump {
+  width: 345px;
+  height: 40px;
+  color: #000;
+  display: flex;
+  outline: none;
+  border: none;
+  justify-content: center;
+  align-items: center;
+}
