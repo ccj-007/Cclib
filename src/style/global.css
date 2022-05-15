@@ -1,9 +1,11 @@
 .cur {
   cursor: pointer;
 }
+
 .u-flex {
   display: flex;
 }
+
 .gray {
   color: rgb(177, 177, 177);
 }
@@ -88,4 +90,30 @@
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+}
+
+
+/*修改滚动条样式*/
+div::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  /**/
+}
+
+div::-webkit-scrollbar-track {
+  background: rgb(239, 239, 239);
+  border-radius: 2px;
+}
+
+div::-webkit-scrollbar-thumb {
+  background: #bfbfbf;
+  border-radius: 10px;
+}
+
+div::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+div::-webkit-scrollbar-corner {
+  background: #179a16;
 }

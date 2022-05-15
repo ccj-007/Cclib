@@ -14,6 +14,8 @@ import { login } from '@/request/api/login'
 import Alerts from '@/components/alert'
 import { useSelector, useDispatch } from "react-redux";
 import { setAlerts } from '@/redux/alerts/actions'
+import { LoginInfoCreator } from '@/redux/loginInfo/actions'
+
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: '#000',
   width: '100%',
@@ -43,8 +45,9 @@ export default function Login() {
   });
   const onSubmit = async (data: any) => {
     let { username, password } = data
-    let res = await login({ username, password })
-    console.log("结果", res)
+    // let res = await login({ username, password })
+    //@ts-ignore
+    let res = await dispatch(LoginInfoCreator({ username: username, password: password }))
     if (res.success) {
       dispatch(setAlerts({ type: 'success', content: '恭喜你，登录成功 ！！！' }))
       Navigate('/home/first')
@@ -52,7 +55,7 @@ export default function Login() {
       dispatch(setAlerts({ type: 'error', content: '你的账号和密码存在错误 ！！！' }))
     }
   };
-  const jumpHome = () => {
+  const jumpHome = async () => {
     dispatch(setAlerts({ type: 'success', content: '恭喜你，登录成功 ！！！' }))
     Navigate('/home/first')
   }

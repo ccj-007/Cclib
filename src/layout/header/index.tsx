@@ -11,7 +11,6 @@ interface MyTheme {
 }
 export default function Header() {
   const theme = useTheme<MyTheme>();
-  let bgStyle = theme.status.main
 
   const HeaderCSS = css`
   width: 100vw;
@@ -19,7 +18,7 @@ export default function Header() {
   height: 7vh;
   display: flex;
   justify-content: space-between;
-  background-color: ${bgStyle};
+  background-color: #000;
 `;
 
   return (

@@ -31,16 +31,16 @@ function App() {
     [],
   );
 
-  // Update the theme only if the mode changes
+  //@ts-ignore
   const globalTheme = React.useMemo(
     () =>
       createTheme({
         palette: {
           mode,
         },
-        status: {
-          main: '#000',
-        },
+        // status: {
+        //   main: '#000',
+        // },
       }),
     [mode],
   );

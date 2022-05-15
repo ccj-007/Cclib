@@ -32,7 +32,6 @@ declare module '@mui/material/styles' {
     };
   }
 }
-
 declare module '@mui/styles' {
   interface useTheme {}
 }

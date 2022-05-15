@@ -8,7 +8,7 @@ import { clearTimeout } from 'timers';
 import { useWatch } from '@/hooks/useWatch'
 
 export default function Alerts() {
-  const store = useSelector((state) => state);
+  const store: any = useSelector((state) => state);
   let { type, content } = store.alertsReducers
   const dispatch = useDispatch()
 

@@ -1,23 +1,30 @@
-.wrap {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.box {
+  padding: 20px;
 }
 
-.loginImg {
-  width: 500px;
-  height: 400px;
+.topBox {
+  height: 15vh;
 }
 
-.jump {
-  width: 345px;
-  height: 40px;
-  color: #000;
+.topBox:hover {
+  box-shadow: 0px 0px 10px 0px rgba(159, 159, 159, 0.5);
+}
+
+.bottomBox:hover {
+  box-shadow: 0px 0px 10px 0px rgba(159, 159, 159, 0.5);
+}
+
+.grey {
+  background: rgb(247, 247, 247);
+}
+
+.bottomBox {
+  height: 52vh;
+}
+
+.subTitle {
+  height: 80px;
   display: flex;
-  outline: none;
-  border: none;
   justify-content: center;
   align-items: center;
 }

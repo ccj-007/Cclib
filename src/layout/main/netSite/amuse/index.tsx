@@ -3,7 +3,8 @@ import styles from './index.module.css';
 export default function amuse() {
   return (
     <div >
-      amuse
+      dev......
+
     </div>
   );
 }

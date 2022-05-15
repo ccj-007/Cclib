@@ -90,7 +90,7 @@ export default function Code() {
 
   //click on the jump code modules
   const jumpCodeSite = (url: any) => {
-    window.location.href = url
+    window.open(url)
   }
   const incrementClick = () => {
     dispatch(increment())

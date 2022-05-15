@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 
 export default function Load() {
-  const { loadReducers } = useSelector((state) => state)
+  const { loadReducers } = useSelector((state: any) => state)
   console.log("loadReducers组件内实例", loadReducers);
   return (
     loadReducers == true ?
