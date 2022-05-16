@@ -64,7 +64,8 @@ type codeType = {
   title: string,
   type: 'code' | 'design' | 'amuse',
   expanded: boolean,
-  imgUrl: string
+  imgUrl: string,
+  token: string,
 }
 
 export default function Code() {
@@ -76,6 +77,7 @@ export default function Code() {
   React.useEffect(() => {
     const init = async () => {
       const res = await getNetSiteCodeLinkList()
+      if (!res) return
       let getCodes = res.data.filter((item: codeType) => item.type === 'code')
       getCodes.forEach((codeLink: { expanded: boolean }) => { codeLink.expanded = false })
       setLinkList(getCodes) //filter out the type of code module

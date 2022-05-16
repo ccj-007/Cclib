@@ -23,7 +23,6 @@ export const LoginInfoCreator =
   async (dispatch, getState) => {
     try {
       const res = await login(params);
-      console.log('异步获取数据', res.data);
       dispatch(loginInfoFnAction(res.data));
       return res;
     } catch (error) {

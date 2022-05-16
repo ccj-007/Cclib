@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { AxiosResponse } from 'axios';
 import store from '@/redux/index';
 import { actionLoading } from '@/redux/load/actions';
 import { setAlerts } from '@/redux/alerts/actions';
-
+import Storage from '@/utils/localStoage';
 const isPrd = process.env.NODE_ENV;
 
 export const baseURL = isPrd
@@ -18,7 +17,14 @@ const service = axios.create({
 });
 
 service.interceptors.request.use(
-  (config) => {
+  (config: any) => {
+    const token = Storage.get('token') || '';
+    let pathname = window.location.pathname;
+    if (!token && pathname !== '/login') {
+      pathname = '/login';
+    }
+    config.headers.token = token;
+
     store.dispatch(actionLoading(true));
     let state = store.getState();
     console.log('loadReducers请求', state);
@@ -48,7 +54,7 @@ service.interceptors.response.use(
           store.dispatch(
             setAlerts({
               type: 'error',
-              content: JSON.stringify(response.data),
+              content: response.data.message,
             }),
           );
           return response.data;

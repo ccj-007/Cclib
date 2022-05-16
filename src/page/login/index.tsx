@@ -15,6 +15,7 @@ import Alerts from '@/components/alert'
 import { useSelector, useDispatch } from "react-redux";
 import { setAlerts } from '@/redux/alerts/actions'
 import { LoginInfoCreator } from '@/redux/loginInfo/actions'
+import Storage from '@/utils/localStoage';
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: '#000',
@@ -43,11 +44,16 @@ export default function Login() {
       select: {}
     }
   });
+
+  React.useEffect(() => {
+    Storage.remove('token')
+  }, [])
+
   const onSubmit = async (data: any) => {
     let { username, password } = data
-    // let res = await login({ username, password })
     //@ts-ignore
     let res = await dispatch(LoginInfoCreator({ username: username, password: password }))
+    res.data.token && Storage.set('token', res.data.token)
     if (res.success) {
       dispatch(setAlerts({ type: 'success', content: '恭喜你，登录成功 ！！！' }))
       Navigate('/home/first')
