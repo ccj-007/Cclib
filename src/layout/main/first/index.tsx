@@ -70,8 +70,8 @@ export default function First() {
   }, [load])
   return (
     <div className={styles.box}>
-      <Grid container spacing={2}>
-        <Grid item xs={4} >
+      <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12 }}>
+        <Grid item xs={12} sm={6} md={4}>
           <Item className={`${styles.topBox} ${styles.grey}`}>
             {
               load ?
@@ -93,7 +93,7 @@ export default function First() {
             }
           </Item>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <Item className={`${styles.topBox} ${styles.grey}`} >
             {
               load ?
@@ -115,7 +115,7 @@ export default function First() {
             }
           </Item>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <Item className={`${styles.topBox} ${styles.grey}`}>
             {
               load ?
@@ -139,7 +139,7 @@ export default function First() {
         </Grid>
 
         {/* 最大的盒子 */}
-        <Grid item xs={8}>
+        <Grid item xs={12} sm={12} md={8}>
           <Item className={`${styles.bottomBox} ${styles.grey}`}>
             <div id="main_column" style={{ display: load ? 'block' : 'none' }} />
             <div style={{ display: load ? 'none' : 'block' }} >
@@ -149,7 +149,7 @@ export default function First() {
             </div>
           </Item>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={12} md={4}>
           <Item className={`${styles.bottomBox} ${styles.grey}`}>
             <div id="main_bar" style={{ display: load ? 'block' : 'none' }} />
             <div style={{ display: load ? 'none' : 'block' }} >

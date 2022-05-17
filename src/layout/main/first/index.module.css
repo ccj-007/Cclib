@@ -3,7 +3,7 @@
 }
 
 .topBox {
-  height: 15vh;
+  height: 60px;
 }
 
 .topBox:hover {
@@ -19,11 +19,10 @@
 }
 
 .bottomBox {
-  height: 52vh;
+  height: 400px;
 }
 
 .subTitle {
-  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;

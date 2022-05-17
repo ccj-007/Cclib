@@ -37,10 +37,10 @@ function App() {
       createTheme({
         palette: {
           mode,
+          primary: {
+            main: '#0cf983'
+          },
         },
-        // status: {
-        //   main: '#000',
-        // },
       }),
     [mode],
   );

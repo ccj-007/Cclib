@@ -72,12 +72,11 @@ export default function Code() {
   const countState = useSelector((state) => state);
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
   const [linkList, setLinkList] = React.useState([]);
   React.useEffect(() => {
     const init = async () => {
       const res = await getNetSiteCodeLinkList()
-      if (!res) return
+      if (!res || !res.data) return
       let getCodes = res.data.filter((item: codeType) => item.type === 'code')
       getCodes.forEach((codeLink: { expanded: boolean }) => { codeLink.expanded = false })
       setLinkList(getCodes) //filter out the type of code module
@@ -103,9 +102,9 @@ export default function Code() {
       <div>
         <MainHeader ></MainHeader>
       </div>
-      <Grid container spacing={{ xs: 0, md: 0 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+      <Grid container spacing={{ xs: 0, md: 0 }} columns={{ xs: 12, sm: 12, md: 12 }}>
         {linkList.map((link: codeType, index) => (
-          <Grid item xs={2} sm={4} md={3} key={index}>
+          <Grid item xs={12} sm={4} md={3} key={index}>
             <Item>
               <Card sx={{ maxWidth: 345 }}>
                 <CardHeader

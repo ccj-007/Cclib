@@ -8,7 +8,7 @@ import SearchBar from "../searchBar";
 import RightSidebar from '@/layout/rightSidebar'
 import { useSelector, useDispatch } from "react-redux";
 import { defaultState } from '@/redux/loginInfo/loginInfoReducers'
-
+import LogoutIcon from '@mui/icons-material/Logout';
 export default function HeaderRight() {
   let navigate = useNavigate();
   const [userInfo, setUserInfo] = React.useState(defaultState)
@@ -34,18 +34,18 @@ export default function HeaderRight() {
   return (
     <div className='u-flex-center flex-row-end'>
       <SearchBar></SearchBar>
-      <div>{userInfo.nickname}</div>
-      <div className='mr10'>
-        <RightSidebar></RightSidebar>
-      </div>
-      <div className={styles.avatar}>
+      <div>
         <Stack direction='row' spacing={2}>
           {userInfo.avatar ? <Avatar alt="a" src={userInfo.avatar} /> : <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>
           }
         </Stack>
       </div>
-      <div className={styles.login} onClick={jumpLogin}>退出</div>
-      <div className={styles.logout}>登录</div>
+      <div className='mr10 ml10'>
+        <RightSidebar></RightSidebar>
+      </div>
+      <div className='mr10'>
+        <LogoutIcon onClick={jumpLogin}></LogoutIcon>
+      </div>
     </div>
   );
 }

@@ -4,7 +4,6 @@ import Stack from '@mui/material/Stack';
 import { useSelector, useDispatch } from "react-redux";
 import styles from './index.module.css'
 import { setAlerts } from '@/redux/alerts/actions'
-import { clearTimeout } from 'timers';
 import { useWatch } from '@/hooks/useWatch'
 
 export default function Alerts() {

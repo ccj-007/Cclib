@@ -68,7 +68,7 @@ export default function Login() {
 
   return (
     <div className={styles.wrap}>
-      <Card sx={{ maxWidth: 600, maxHeight: 600 }}>
+      <Card >
         <div className={styles.box} >
           <div className={styles.bg} >
             <div className={styles.bgTitle}>CCLIB</div>
