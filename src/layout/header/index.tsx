@@ -2,23 +2,22 @@ import React from 'react';
 import HomeIcon from './homeIcon';
 import HeaderRight from './headerRight';
 import { css, jsx } from '@emotion/react';
-import useTheme from '@mui/material/styles/useTheme';
-
+import { useSelector } from 'react-redux'
 interface MyTheme {
   status: {
     main: string
   }
 }
 export default function Header() {
-  const theme = useTheme<MyTheme>();
-
+  const store: any = useSelector(store => store)
+  const color = store.themeReducers.primary.main || '#000'
   const HeaderCSS = css`
   width: 100vw;
   color: #fff;
   height: 7vh;
   display: flex;
   justify-content: space-between;
-  background-color: #000;
+  background-color: ${color};
 `;
 
   return (

@@ -8,8 +8,10 @@ import ListItemText from '@mui/material/ListItemText';
 import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 import Switch from '@mui/material/Switch';
 import useTheme from '@mui/material/styles/useTheme';
-import { ColorModeContext } from '@/theme/colorModeContext'
-
+import { ColorModeContext } from '@/hooks/useColorModeContext'
+import { ColorPicker } from '@/components/colorPicker'
+import { useDispatch } from 'react-redux'
+import { themeOptions } from '@/options/theme'
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
@@ -32,20 +34,27 @@ export default function RightSidebar() {
         name: 'dark'
       },
       {
-        text: 'header背景切换',
+        text: '经典模式',
         checked: false,
-        name: 'header_backgroundColor'
+        name: 'default'
       }
     ]
   });
   //change theme
   const theme = useTheme<MyTheme>();
   const colorMode = React.useContext(ColorModeContext);
-
+  const dispatch = useDispatch()
   const onGlobalThemeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let switchIndex = state.switchList.findIndex(item => item.name === event.target.name)
-    state.switchList[switchIndex].checked = event.target.checked
-    colorMode.toggleColorMode()
+    state.switchList[switchIndex].checked = !state.switchList[switchIndex].checked
+    setState({ ...state })
+    if (event.target.name == 'dark') {
+      colorMode.toggleColorMode()
+    }
+    if (event.target.name == 'default') {
+      dispatch({ type: 'modify', payload: themeOptions })
+    }
+
   };
 
   const toggleDrawer =
@@ -82,6 +91,9 @@ export default function RightSidebar() {
         ))}
       </List>
       <Divider />
+      <div style={{ width: "100 %" }} className='u-flex-column mt10'>
+        <ColorPicker></ColorPicker>
+      </div>
     </Box>
   );
 

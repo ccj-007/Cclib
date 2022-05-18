@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './index.module.css';
 import Card from '@mui/material/Card';
+import { css, jsx } from '@emotion/react';
 import Select from "react-select";
 import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from "react-hook-form";
@@ -34,9 +35,9 @@ type storeType = {
 }
 export default function Login() {
   const Navigate = useNavigate()
-  const store = useSelector((state) => state);
+  const store: any = useSelector((state) => state);
   const dispatch = useDispatch()
-
+  const color = store.themeReducers.primary.main || '#fff'
   const { control, handleSubmit } = useForm({
     defaultValues: {
       username: '',
@@ -48,6 +49,15 @@ export default function Login() {
   React.useEffect(() => {
     Storage.remove('token')
   }, [])
+
+  const LoginWarpCSS = css`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${color};
+`;
 
   const onSubmit = async (data: any) => {
     let { username, password } = data
@@ -67,7 +77,7 @@ export default function Login() {
   }
 
   return (
-    <div className={styles.wrap}>
+    <div css={LoginWarpCSS}>
       <Card >
         <div className={styles.box} >
           <div className={styles.bg} >

@@ -39,3 +39,4 @@ declare module '@mui/styles' {
 declare module '*.jpg';
 declare module '*.png';
 declare module '*.ts';
+declare module 'react-color';

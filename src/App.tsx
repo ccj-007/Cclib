@@ -10,14 +10,14 @@ import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import createTheme from '@mui/material/styles/createTheme';
 import { PaletteMode } from '@mui/material';
 import { amber, deepOrange, grey } from '@mui/material/colors';
-import { ColorModeContext } from '@/theme/colorModeContext'
+import { ColorModeContext } from '@/hooks/useColorModeContext'
 import Alerts from '@/components/alert'
 import Load from '@/components/load'
-
+import { useSelector } from "react-redux";
 
 function App() {
   const element = useRoutes(routes)
-
+  const store: any = useSelector((state) => state);
   const [mode, setMode] = React.useState<PaletteMode>('light');
   const colorMode = React.useMemo(
     () => ({
@@ -37,9 +37,7 @@ function App() {
       createTheme({
         palette: {
           mode,
-          primary: {
-            main: '#0cf983'
-          },
+          ...store.themeReducers
         },
       }),
     [mode],
