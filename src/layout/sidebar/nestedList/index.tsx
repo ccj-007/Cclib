@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
+import styles from './index.module.css'
 import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
 import { menuRoutes } from '../../../router/menuRoutes';
@@ -23,6 +24,7 @@ import PivotTableChartIcon from '@mui/icons-material/PivotTableChart';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import { FamilyRestroomRounded, LensTwoTone } from '@mui/icons-material';
 import { AnyListenerPredicate } from '@reduxjs/toolkit/dist/listenerMiddleware/types';
+import Swiper from './swiper'
 
 const iconList: any = {
   "SendIcon": <SendIcon />,
@@ -65,9 +67,9 @@ export default function NestedList() {
       component='nav'
       aria-labelledby='nested-list-subheader'
       subheader={
-        <ListSubheader component='div' id='nested-list-subheader'>
-          广告位招租
-        </ListSubheader>
+        <div className={styles.swiperBox}>
+          <Swiper></Swiper>
+        </div>
       }>
       {menuRoutes.map((menus: MenusType, i: number) => {
         return (

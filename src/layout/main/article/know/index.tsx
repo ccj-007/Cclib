@@ -4,7 +4,6 @@ export default function Know() {
   return (
     <div >
       dev......
-
     </div>
   );
 }

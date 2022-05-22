@@ -36,6 +36,8 @@ declare module '@mui/styles' {
   interface useTheme {}
 }
 
+declare module 'react-swipeable-views' {}
+
 declare module '*.jpg';
 declare module '*.png';
 declare module '*.ts';

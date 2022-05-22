@@ -1,9 +1,10 @@
 import axios from 'axios';
-import store from '@/redux/index';
+import rootStore from '@/redux/index';
 import { actionLoading } from '@/redux/load/actions';
 import { setAlerts } from '@/redux/alerts/actions';
 import Storage from '@/utils/localStoage';
 const isPrd = process.env.NODE_ENV;
+const store = rootStore.store;
 
 export const baseURL = isPrd
   ? 'http://localhost:8000'

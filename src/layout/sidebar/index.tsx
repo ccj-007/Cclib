@@ -11,6 +11,7 @@ export default function Sidebar() {
   const theme = useTheme();
   const mode = theme.palette.mode
   const changeWidth = store.layoutReducers.leftSidebar ? '15vw' : '0vw'
+
   return (
     <Box
       sx={{

@@ -21,9 +21,10 @@ export default function Main() {
         height: '83vh',
         overflowY: 'auto',
         overflowX: 'hidden',
-        transition: 'all 0.3s ease',
         width: changeWidth,
         backgroundColor: mode === 'light' ? '#fff' : '#000',
+        transition: 'all .5s ease'
+
       }}
     >  <div className={styles.warp}>
         <Paper elevation={12}>
