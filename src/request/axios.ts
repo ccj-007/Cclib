@@ -12,6 +12,7 @@ export const baseURL = isPrd
 
 const service = axios.create({
   baseURL,
+  timeout: 5000,
   headers: {
     'Content-Type': 'application/json;charset=utf-8',
   },
@@ -39,10 +40,11 @@ service.interceptors.request.use(
 
 // 响应拦截器
 service.interceptors.response.use(
-  (response) => {
+  (response: any) => {
     store.dispatch(actionLoading(false));
-    if (response.data.code) {
-      switch (response.data.code) {
+    let resCode = response.data.code;
+    if (resCode) {
+      switch (resCode) {
         case 200:
           return response.data;
         case 401:

@@ -12,6 +12,10 @@ declare module '@reduxjs/toolkit' {
   type combineReducers = {};
 }
 
+declare module 'react-i18next' {
+  export const useTranslation = (): any => {};
+  export const initReactI18next;
+}
 declare module '@mui/material/styles' {
   interface Theme {
     status: {
@@ -37,6 +41,7 @@ declare module '@mui/styles' {
 }
 
 declare module 'react-swipeable-views' {}
+declare module 'i18next' {}
 
 declare module '*.jpg';
 declare module '*.png';

@@ -1,28 +1,28 @@
 export const menuRoutes = [
   {
     path: '/home/netSite',
-    name: '宝藏网址',
+    name: 'netSite',
     meta: {
       icon: 'SendIcon',
     },
     children: [
       {
         path: '/home/netSite/code',
-        name: '编程导航',
+        name: 'code',
         meta: {
           icon: 'DraftsIcon',
         },
       },
       {
         path: '/home/netSite/design',
-        name: '设计指南',
+        name: 'design',
         meta: {
           icon: 'InboxIcon',
         },
       },
       {
         path: '/home/netSite/amuse',
-        name: '有点意思',
+        name: 'amuse',
         meta: {
           icon: 'InboxIcon',
         },
@@ -31,28 +31,28 @@ export const menuRoutes = [
   },
   {
     path: '/home/article',
-    name: '技术文章',
+    name: 'article',
     meta: {
       icon: 'MenuBookIcon',
     },
     children: [
       {
         path: '/home/article/skill',
-        name: '技术记录',
+        name: 'skill',
         meta: {
           icon: 'DraftsIcon',
         },
       },
       {
         path: '/home/article/share',
-        name: '生活分享',
+        name: 'share',
         meta: {
           icon: 'InboxIcon',
         },
       },
       {
         path: '/home/article/know',
-        name: '世界见闻',
+        name: 'know',
         meta: {
           icon: 'InboxIcon',
         },
@@ -61,21 +61,21 @@ export const menuRoutes = [
   },
   {
     path: '/home/suModel',
-    name: 'SU模型库',
+    name: 'suModel',
     meta: {
       icon: 'ApartmentIcon',
     },
     children: [
       {
         path: '/home/suModel/modelLibs',
-        name: '模型库',
+        name: 'modelLibs',
         meta: {
           icon: 'DraftsIcon',
         },
       },
       {
         path: '/home/suModel/uploadModel',
-        name: '模型上传',
+        name: 'uploadModel',
         meta: {
           icon: 'InboxIcon',
         },
@@ -84,14 +84,14 @@ export const menuRoutes = [
   },
   {
     path: '/home/plugin',
-    name: '桌面小插件',
+    name: 'plugin',
     meta: {
       icon: 'PivotTableChartIcon',
     },
   },
   {
     path: '/home/custom',
-    name: '定制头像',
+    name: 'custom',
     meta: {
       icon: 'AssignmentIndIcon',
     },

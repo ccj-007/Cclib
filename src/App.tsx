@@ -14,6 +14,7 @@ import { ColorModeContext } from '@/hooks/useColorModeContext'
 import Alerts from '@/components/alert'
 import Load from '@/components/load'
 import { useSelector } from "react-redux";
+import '@/i18n/configs'
 
 function App() {
   const element = useRoutes(routes)

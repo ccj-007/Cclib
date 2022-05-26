@@ -1,19 +1,14 @@
 import { loginInfoFnAction, LoginInfoAction } from './actions';
 
-type LoginInfoState = {
-  username: string;
-  password: string;
-  uid: string;
-  nickname: string;
-  avatar: string;
-};
+type LoginInfoState = typeof defaultState;
 
-export const defaultState: LoginInfoState = {
+export const defaultState = {
   username: '',
   password: '',
   uid: '',
   nickname: 'your name ！',
   avatar: '',
+  create_time: '',
 };
 
 export default (state = defaultState, action: LoginInfoAction) => {

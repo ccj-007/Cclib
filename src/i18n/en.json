@@ -1,0 +1,17 @@
+{
+  "leftSide": {
+    "netSite": "netSite",
+    "code": "code",
+    "design": "design",
+    "amuse": "amuse",
+    "article": "article",
+    "skill": "skill",
+    "share": "share",
+    "know": "know",
+    "suModel": "suModel",
+    "modelLibs": "modelLibs",
+    "uploadModel": "uploadModel",
+    "plugin": "plugin",
+    "custom": "custom"
+  }
+}

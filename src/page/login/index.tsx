@@ -63,14 +63,22 @@ export default function Login() {
     let { username, password } = data
     //@ts-ignore
     let res = await dispatch(LoginInfoCreator({ username: username, password: password }))
-    res.data.token && Storage.set('token', res.data.token)
-    if (res.success) {
-      dispatch(setAlerts({ type: 'success', content: '恭喜你，登录成功 ！！！' }))
+    res.data && res.data.token && Storage.set('token', res.data.token)
+    if (res.success === true) {
+      handleStatusTips('success', '恭喜你，登录成功 ！！！')
       Navigate('/home/first')
-    } else {
-      dispatch(setAlerts({ type: 'error', content: '你的账号和密码存在错误 ！！！' }))
+    }
+    if (res.success === false) {
+      handleStatusTips('error', '你的账号和密码存在错误 ！！！')
+    }
+    if (res.code === 'ERR_NETWORK') {
+      handleStatusTips('error', '网络错误')
     }
   };
+  const handleStatusTips = (type: 'error' | 'success', content: string) => {
+    dispatch(setAlerts({ type, content }))
+  }
+
   const jumpHome = async () => {
     dispatch(setAlerts({ type: 'success', content: '恭喜你，登录成功 ！！！' }))
     Navigate('/home/first')

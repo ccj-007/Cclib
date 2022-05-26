@@ -25,7 +25,7 @@ import ApartmentIcon from '@mui/icons-material/Apartment';
 import { FamilyRestroomRounded, LensTwoTone } from '@mui/icons-material';
 import { AnyListenerPredicate } from '@reduxjs/toolkit/dist/listenerMiddleware/types';
 import Swiper from './swiper'
-
+import { useTranslation } from "react-i18next";
 const iconList: any = {
   "SendIcon": <SendIcon />,
   "DraftsIcon": <DraftsIcon />,
@@ -48,6 +48,7 @@ const getIconComponent = (menu: MenusType | childrenType) => {
 };
 export default function NestedList() {
   let initOpen: any = Array.from({ length: 5 }).fill(true)
+  const { t, i18n } = useTranslation();
 
   const [openList, setOpenList] = useState(initOpen)
 
@@ -79,7 +80,7 @@ export default function NestedList() {
                 {/* <SendIcon /> */}
                 {getIconComponent(menus)}
               </ListItemIcon>
-              <ListItemText primary={menus.name} />
+              <ListItemText primary={t('leftSide.' + menus.name)} />
               {openList[i] ? <ExpandMore /> : <ExpandLess />}
             </ListItemButton>
 
@@ -93,7 +94,7 @@ export default function NestedList() {
                           <ListItemIcon>
                             {getIconComponent(menu)}
                           </ListItemIcon>
-                          <ListItemText primary={menu.name} />
+                          <ListItemText primary={t('leftSide.' + menu.name)} />
                         </ListItemButton>
                       </List>
                     </Collapse>
