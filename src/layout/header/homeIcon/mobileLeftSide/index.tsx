@@ -30,8 +30,8 @@ export default function TemporaryDrawer(props: { expand: boolean, getExpand: any
         setState({ ...state, [anchor]: open });
       };
 
-  React.useEffect(() => {
-    setState({ ...state, ['left']: expand });
+  React.useEffect(function () {
+    setState({ left: expand });
   }, [expand])
 
 

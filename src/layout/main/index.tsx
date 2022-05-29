@@ -1,5 +1,4 @@
 import React from 'react';
-import { css, jsx } from '@emotion/react';
 import styles from './index.module.css';
 import { Outlet } from 'react-router-dom'
 import Paper from '@mui/material/Paper';
@@ -8,9 +7,7 @@ import Box from '@mui/material/Box';
 import { useSelector } from "react-redux";
 import { isPC } from '@/utils/mobile.ts'
 
-const main = css`
-  
-`;
+
 export default function Main() {
   const theme = useTheme();
   const store: any = useSelector((state) => state);

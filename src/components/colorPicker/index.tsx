@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { HexColorPicker } from "react-colorful";
 import Button from '@mui/material/Button';
-import useTheme from '@mui/material/styles/useTheme';
-import { useSelector, useDispatch } from "react-redux";
-import { setThemeActions } from '@/redux/setTheme/actions'
+import { useDispatch } from "react-redux";
 export const ColorPicker = () => {
   const [color, setColor] = React.useState("#aabbcc");
   const dispatch = useDispatch()
