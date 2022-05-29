@@ -5,6 +5,7 @@ const {
   addWebpackAlias,
   addWebpackPlugin,
   babelExclude,
+  overrideDevServer
 } = require('customize-cra');
 const path = require('path');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
@@ -40,36 +41,38 @@ const addAnalyzer = () => (config) => {
   return config;
 };
 
-module.exports = override(
-  // emotion css props support
-  addBabelPreset('@emotion/babel-preset-css-prop'),
-  fixBabelImports('import', [
-    {
-      libraryName: '@material-ui/core',
-      libraryDirectory: 'esm',
-      camel2DashComponentName: false,
-    },
-  ]),
-  addCompression(),
-  addAnalyzer(),
-  addWebpackPlugin(
-    // 终端进度条显示
-    new ProgressBarPlugin(),
-  ),
-  addWebpackAlias({
-    ['@']: path.resolve(__dirname, 'src'),
-    ['@page']: path.resolve(__dirname, 'src/page'),
-  }),
-  addLessLoader({
-    strictMath: true,
-    noIeCompat: true,
-    modifyVars: {
-      '@primary-color': '#1DA57A',
-    },
-    cssLoaderOptions: {}, // .less file used css-loader option, not all CSS file.
-    cssModules: {
-      localIdentName: '[path][name]__[local]--[hash:base64:5]',
-    },
-  }),
-  babelExclude([path.resolve('src/service')]), //排除后端代码
-);
+module.exports = {
+  webpack: override(
+    // emotion css props support
+    addBabelPreset('@emotion/babel-preset-css-prop'),
+    fixBabelImports('import', [
+      {
+        libraryName: '@material-ui/core',
+        libraryDirectory: 'esm',
+        camel2DashComponentName: false,
+      },
+    ]),
+    addCompression(),
+    addAnalyzer(),
+    addWebpackPlugin(
+      // 终端进度条显示
+      new ProgressBarPlugin(),
+    ),
+    addWebpackAlias({
+      ['@']: path.resolve(__dirname, 'src'),
+      ['@page']: path.resolve(__dirname, 'src/page'),
+    }),
+    addLessLoader({
+      strictMath: true,
+      noIeCompat: true,
+      modifyVars: {
+        '@primary-color': '#1DA57A',
+      },
+      cssLoaderOptions: {}, // .less file used css-loader option, not all CSS file.
+      cssModules: {
+        localIdentName: '[path][name]__[local]--[hash:base64:5]',
+      },
+    }),
+    babelExclude([path.resolve('src/service')]), //排除后端代码
+  )
+}

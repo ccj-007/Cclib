@@ -3,12 +3,11 @@ import rootStore from '@/redux/index';
 import { actionLoading } from '@/redux/load/actions';
 import { setAlerts } from '@/redux/alerts/actions';
 import Storage from '@/utils/localStoage';
-const isPrd = process.env.NODE_ENV;
+const isDev = process.env.NODE_ENV;
 const store = rootStore.store;
 
-export const baseURL = isPrd
-  ? 'http://localhost:8000'
-  : 'http://124.223.162.201';
+export const baseURL =
+  isDev === 'development' ? 'http://localhost:3000' : 'http://cclibs.cn:8000';
 
 const service = axios.create({
   baseURL,

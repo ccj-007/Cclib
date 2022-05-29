@@ -6,6 +6,7 @@ import Paper from '@mui/material/Paper';
 import useTheme from '@mui/material/styles/useTheme';
 import Box from '@mui/material/Box';
 import { useSelector } from "react-redux";
+import { isPC } from '@/utils/mobile.ts'
 
 const main = css`
   
@@ -14,7 +15,7 @@ export default function Main() {
   const theme = useTheme();
   const store: any = useSelector((state) => state);
   const mode = theme.palette.mode
-  const changeWidth = store.layoutReducers.leftSidebar ? '85vw' : '100vw'
+  const changeWidth = store.layoutReducers.leftSidebar && isPC() ? '85vw' : '100vw'
   return (
     <Box
       sx={{
