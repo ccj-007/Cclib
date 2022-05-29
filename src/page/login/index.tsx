@@ -83,6 +83,9 @@ export default function Login() {
     dispatch(setAlerts({ type: 'success', content: '恭喜你，登录成功 ！！！' }))
     Navigate('/home/first')
   }
+  const jumpGithub = () => {
+    window.open("https://github.com/ccj-007")
+  }
 
   return (
     <div css={LoginWarpCSS}>
@@ -140,7 +143,7 @@ export default function Login() {
               <ColorButton variant="contained">立即注册</ColorButton>
             </Stack>
             <Stack spacing={2} direction="row">
-              <ColorButton variant="contained">访问github</ColorButton>
+              <ColorButton variant="contained" onClick={jumpGithub}>访问github</ColorButton>
             </Stack>
           </form>
         </div>
