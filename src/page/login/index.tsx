@@ -17,6 +17,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setAlerts } from '@/redux/alerts/actions'
 import { LoginInfoCreator } from '@/redux/loginInfo/actions'
 import Storage from '@/utils/localStoage';
+import Register from './register'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: '#000',
@@ -45,6 +46,8 @@ export default function Login() {
       select: {}
     }
   });
+  const [openRegisterDialog, setOpenRegisterDialog] = React.useState(false);
+
 
   React.useEffect(() => {
     Storage.remove('token')
@@ -87,9 +90,19 @@ export default function Login() {
     window.open("https://github.com/ccj-007")
   }
 
+  //打开注册弹窗
+  const handleClickOpenRegister = () => {
+    setOpenRegisterDialog(true)
+  }
+  //关闭注册弹窗
+  const closeClickOpenRegister = () => {
+    setOpenRegisterDialog(false)
+  }
+
   return (
     <div css={LoginWarpCSS}>
       <Card >
+        <Register registerDialog={openRegisterDialog} close={closeClickOpenRegister}></Register>
         <div className={styles.box} >
           <div className={styles.bg} >
             <div className={styles.bgTitle}>CCLIB</div>
@@ -140,7 +153,7 @@ export default function Login() {
               <ColorButton variant="contained" onClick={jumpHome}>游客登录</ColorButton>
             </Stack>
             <Stack spacing={2} direction="row">
-              <ColorButton variant="contained">立即注册</ColorButton>
+              <ColorButton variant="contained" onClick={handleClickOpenRegister}>立即注册</ColorButton>
             </Stack>
             <Stack spacing={2} direction="row">
               <ColorButton variant="contained" onClick={jumpGithub}>访问github</ColorButton>

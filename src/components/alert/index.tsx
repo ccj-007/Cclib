@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack';
 import { useSelector, useDispatch } from "react-redux";
 import styles from './index.module.css'
 import { setAlerts } from '@/redux/alerts/actions'
-import { useWatch } from '@/hooks/useWatch'
+import { useWatch } from '@/hooks/index.ts'
 
 export default function Alerts() {
   const store: any = useSelector((state) => state);

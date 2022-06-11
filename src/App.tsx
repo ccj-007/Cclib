@@ -10,7 +10,7 @@ import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import createTheme from '@mui/material/styles/createTheme';
 import { PaletteMode } from '@mui/material';
 import { amber, deepOrange, grey } from '@mui/material/colors';
-import { ColorModeContext } from '@/hooks/useColorModeContext'
+import { useColorModeContext } from './hooks/index'
 import Alerts from '@/components/alert'
 import Load from '@/components/load'
 import { useSelector } from "react-redux";
@@ -45,7 +45,7 @@ function App() {
   );
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
+    <useColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={globalTheme}>
         <Alerts></Alerts>
         <Load></Load>
@@ -55,7 +55,7 @@ function App() {
           {/* </Global> */}
         </div>
       </ThemeProvider>
-    </ColorModeContext.Provider>
+    </useColorModeContext.Provider>
   );
 }
 

@@ -8,7 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 import Switch from '@mui/material/Switch';
 import useTheme from '@mui/material/styles/useTheme';
-import { ColorModeContext } from '@/hooks/useColorModeContext'
+import { useColorModeContext } from '@/hooks'
 import { ColorPicker } from '@/components/colorPicker'
 import { useDispatch } from 'react-redux'
 import { themeOptions } from '@/options/theme'
@@ -53,7 +53,7 @@ export default function RightSidebar() {
   });
   //change theme
   const theme = useTheme<MyTheme>();
-  const colorMode = React.useContext(ColorModeContext);
+  const colorMode = React.useContext(useColorModeContext);
   const dispatch = useDispatch()
   const onGlobalThemeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let switchIndex = state.switchList.findIndex(item => item.name === event.target.name)

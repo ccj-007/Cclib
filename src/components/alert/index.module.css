@@ -2,7 +2,7 @@
   position: fixed;
   left: 50%;
   top: 0%;
-  z-index: 99;
+  z-index: 99999999999999;
   transform: translate(-50%);
   transition: 0.1s all linear;
 }

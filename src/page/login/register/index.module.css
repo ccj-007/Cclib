@@ -1,0 +1,24 @@
+.input {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.submit {
+  color: #fff;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  width: 150px;
+  height: 50px;
+  background: rgb(3, 143, 156);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit:hover {
+  opacity: .8;
+}

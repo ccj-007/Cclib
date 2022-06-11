@@ -7,7 +7,7 @@ const isDev = process.env.NODE_ENV;
 const store = rootStore.store;
 
 export const baseURL =
-  isDev === 'development' ? 'http://localhost:3000' : 'http://cclibs.cn:8000';
+  isDev === 'development' ? 'http://localhost:8000' : 'http://cclibs.cn:8000';
 
 const service = axios.create({
   baseURL,
@@ -45,6 +45,12 @@ service.interceptors.response.use(
     if (resCode) {
       switch (resCode) {
         case 200:
+          store.dispatch(
+            setAlerts({
+              type: 'success',
+              content: response.data.message,
+            }),
+          );
           return response.data;
         case 401:
           //未登录处理方法

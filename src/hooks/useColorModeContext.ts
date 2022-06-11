@@ -1,4 +1,9 @@
+/**
+ * 切换主题
+ */
 import React from 'react';
-export const ColorModeContext = React.createContext({
+const useColorModeContext = React.createContext({
   toggleColorMode: () => {},
 });
+
+export default useColorModeContext;
