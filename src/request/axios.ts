@@ -42,13 +42,14 @@ service.interceptors.response.use(
   (response: any) => {
     store.dispatch(actionLoading(false));
     let resCode = response.data.code;
+    let resMsg = response.data.message;
     if (resCode) {
       switch (resCode) {
         case 200:
           store.dispatch(
             setAlerts({
               type: 'success',
-              content: response.data.message,
+              content: resMsg ? resMsg : '加载成功',
             }),
           );
           return response.data;
@@ -62,7 +63,7 @@ service.interceptors.response.use(
           store.dispatch(
             setAlerts({
               type: 'error',
-              content: response.data.message,
+              content: resMsg ? resMsg : '加载失败',
             }),
           );
           return response.data;

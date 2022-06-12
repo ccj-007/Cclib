@@ -6,6 +6,10 @@
   margin: 10px 0;
 }
 
+.input_text {
+  color: rgb(237, 237, 237);
+}
+
 .submit {
   color: #fff;
   position: relative;
@@ -21,4 +25,8 @@
 
 .submit:hover {
   opacity: .8;
+}
+
+.submit_error {
+  background: rgb(199, 199, 199);
 }

@@ -127,9 +127,8 @@ export default function Login() {
             <Controller
               name="password"
               control={control}
-              render={({ field }) => <Input placeholder='输入您的密码' {...field} className={styles.input} />}
+              render={({ field }) => <Input type="password" placeholder='输入您的密码' {...field} className={styles.input} />}
             />
-
             <div className='mt10'>
               <Typography variant="h6" component="div" gutterBottom>
                 账号配置

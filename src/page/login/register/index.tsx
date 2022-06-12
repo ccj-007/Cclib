@@ -6,12 +6,12 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { TransitionProps } from '@mui/material/transitions';
 import Slide from '@mui/material/Slide';
 import styles from './index.module.css';
-import Select from "react-select";
-import Input from "@mui/material/Input";
 import Avatar from '@mui/material/Avatar';
 import { deepOrange, deepPurple } from '@mui/material/colors';
 import TextField from "@mui/material/TextField";
+import { useAlert } from '@/hooks'
 import { register } from '@/request/api/login'
+
 interface IFormInput {
   password: string;
   username: string;
@@ -28,15 +28,46 @@ const Transition = React.forwardRef(function Transition(
 });
 
 const Register: React.FC<any> = (props) => {
+  let alert = useAlert()
+  let { registerDialog, close } = props
   const [open, setOpen] = React.useState(false);
+  const [check, setCheck] = React.useState(false);
   const {
     handleSubmit,
     control,
-    formState: { errors }
-  } = useForm<IFormInput>();
-  let { registerDialog, close } = props
+    watch,
+    trigger,
+    formState: { errors },
+    reset,
+    getFieldState,
+    setError
+  } = useForm<IFormInput>({
+    defaultValues: {
+      password: "",
+      username: "",
+      nickname: "",
+    }
+  });
 
+  //watch input
+  const watchAllFields = watch();
+  const watchFields = watch(["nickname", "username", "password"]);
+  React.useEffect(() => {
+    const subscription = watch((value, { name, type }) => {
+      //异步获取最新状态
+      setTimeout(async () => {
+        //检查是否校验通过
+        const result = await trigger()
+        setCheck(result)
+      }, 0);
+    });
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
+
+  //成功校验后submit
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    setCheck(true)
     //先校验
     let res = await register(data)
     //检验通过
@@ -44,21 +75,38 @@ const Register: React.FC<any> = (props) => {
       setOpen(false);
       close()
     }
+    reset()
     return
   };
 
+  //监听父组件的打开dialog事件
   React.useEffect(() => {
     if (registerDialog) {
+      reset()
       setOpen(true)
     }
   }, [registerDialog])
 
+  //失去焦点后校验密码input
+  const handlePasswordBlur = () => {
+    const fieldState: any = getFieldState('password');
+    let type = fieldState?.error?.type
+    if (type === 'minLength') {
+      alert('error', '不能小于6位数')
+    }
+    if (type === 'maxLength') {
+      alert('error', '不能大于11位数')
+    }
+    console.log("当前input最新状态", fieldState);
+  }
 
+  //打开或关闭dialog
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
+    reset()
     close()
   };
 
@@ -86,6 +134,7 @@ const Register: React.FC<any> = (props) => {
                 defaultValue=""
                 render={({ field }) => (
                   <TextField
+                    required
                     value={field.value}
                     onChange={field.onChange}
                     inputRef={field.ref}
@@ -102,12 +151,16 @@ const Register: React.FC<any> = (props) => {
                 defaultValue=""
                 render={({ field }) => (
                   <TextField
+                    required
+                    type="password"
+                    className={styles.input_text}
                     value={field.value}
                     onChange={field.onChange}
                     inputRef={field.ref}
+                    onBlur={handlePasswordBlur}
                   />
                 )}
-                rules={{ required: true }}
+                rules={{ required: true, minLength: 6, maxLength: 11 }}
               />
             </div>
             <div className={styles.input}>
@@ -118,6 +171,7 @@ const Register: React.FC<any> = (props) => {
                 defaultValue=""
                 render={({ field }) => (
                   <TextField
+                    required
                     value={field.value}
                     onChange={field.onChange}
                     inputRef={field.ref}
@@ -126,8 +180,7 @@ const Register: React.FC<any> = (props) => {
                 rules={{ required: true }}
               />
             </div>
-
-            <input type="submit" className={styles.submit} />
+            <input type="submit" className={check ? `${styles.submit}` : `${styles.submit} ${styles.submit_error}`} />
           </form>
         </DialogContent>
       </Dialog>
