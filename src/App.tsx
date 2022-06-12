@@ -10,12 +10,11 @@ import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import createTheme from '@mui/material/styles/createTheme';
 import { PaletteMode } from '@mui/material';
 import { amber, deepOrange, grey } from '@mui/material/colors';
-import { useColorModeContext } from './hooks/index'
+import { useColorModeContext, useTitle } from '@/hooks'
 import Alerts from '@/components/alert'
 import Load from '@/components/load'
 import { useSelector } from "react-redux";
 import '@/i18n/configs'
-import { useTitle } from '@/hooks'
 
 function App() {
   useTitle('cc资源库')
