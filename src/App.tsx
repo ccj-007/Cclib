@@ -15,8 +15,10 @@ import Alerts from '@/components/alert'
 import Load from '@/components/load'
 import { useSelector } from "react-redux";
 import '@/i18n/configs'
+import { useTitle } from '@/hooks'
 
 function App() {
+  useTitle('cc资源库')
   const element = useRoutes(routes)
   const store: any = useSelector((state) => state);
   const [mode, setMode] = React.useState<PaletteMode>('light');
