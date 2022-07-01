@@ -54,6 +54,8 @@ export default function Login() {
   }, [])
 
   const LoginWarpCSS = css`
+  display: flex;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -105,7 +107,8 @@ export default function Login() {
         <Register registerDialog={openRegisterDialog} close={closeClickOpenRegister}></Register>
         <div className={styles.box} >
           <div className={styles.bg} >
-            <div className={styles.bgTitle}>CCLIB</div>
+            <div className={styles['bg-title-left']}>CCLIB</div>
+            <div className={styles['bg-title-right']}>个人技术分享</div>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -160,6 +163,10 @@ export default function Login() {
           </form>
         </div>
       </Card>
+
+
+      {/* 备案信息 */}
+      <a href='https://beian.miit.gov.cn/' className={styles['beian-info']} target="_blank">（浙ICP备2022014585号-1）</a>
     </div>
   );
 }

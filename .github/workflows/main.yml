@@ -52,8 +52,8 @@ jobs:
           # 源目录 -- 打包后的文件目录，也就是这个文件会被传到服务器上
           SOURCE: '/build'
           # 服务器ip
-          REMOTE_HOST: '124.223.162.201'
+          REMOTE_HOST: ${{ secrets.CCLIB_HOST }}
           # 用户
           REMOTE_USER: 'root'
           # 目标地址 -- 上传到服务器的地址
-          TARGET: '/www/wwwroot/cclib'
+          TARGET: ${{ secrets.CCLIB_TARGET }}

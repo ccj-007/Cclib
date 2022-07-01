@@ -17,7 +17,7 @@ import { useSelector } from "react-redux";
 import '@/i18n/configs'
 
 function App() {
-  useTitle('cc资源库')
+  useTitle('个人技术分享')
   const element = useRoutes(routes)
   const store: any = useSelector((state) => state);
   const [mode, setMode] = React.useState<PaletteMode>('light');
