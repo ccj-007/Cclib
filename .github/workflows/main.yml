@@ -39,7 +39,7 @@ jobs:
 
       # 打包
       - name: run打包
-        run: CI='' yarn run build
+        run: CI='' yarn build
 
       # 上传到宝塔
       - name: 发布到宝塔
