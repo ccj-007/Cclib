@@ -158,7 +158,7 @@ export default function Login() {
               <ColorButton variant="contained" onClick={handleClickOpenRegister}>立即注册</ColorButton>
             </Stack>
             <Stack spacing={2} direction="row">
-              <ColorButton variant="contained" onClick={jumpGithub}>访问github</ColorButton>
+              <ColorButton variant="contained" onClick={jumpGithub}>github</ColorButton>
             </Stack>
           </form>
         </div>
